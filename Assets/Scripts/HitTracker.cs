@@ -44,6 +44,7 @@ public class HitTracker : MonoBehaviour
     {
         if (MLEyes.IsStarted)
         {
+        
             RaycastHit rayHit;
 
             _heading = MLEyes.FixationPoint - Camera.transform.position;
@@ -51,7 +52,7 @@ public class HitTracker : MonoBehaviour
             // Use the proper material
             if (Physics.Raycast(Camera.transform.position, _heading, out rayHit, 20.0f,mask))
             {
-                Debug.Log("Hit:" + rayHit.transform.name);
+                //Debug.Log("Hit:" + rayHit.transform.name);
 
                 Hittable hittable = rayHit.transform.GetComponent<Hittable>();
 
@@ -80,7 +81,7 @@ public class HitTracker : MonoBehaviour
 
             if(!AdVisible && hitTime > 5.0f)
             {
-                Debug.Log("Ad (" + gameObject.name + "): Turn On");
+                //Debug.Log("Ad (" + gameObject.name + "): Turn On");
                 AdVisible = true;
                 hitTime = 0.0f;
                 AdTime = 0.0f;
@@ -96,7 +97,7 @@ public class HitTracker : MonoBehaviour
 
             if (AdVisible && AdTime > 5.0f)
             {
-                Debug.Log("Ad (" + gameObject.name + "): Turn Off");
+                //Debug.Log("Ad (" + gameObject.name + "): Turn Off");
                 AdVisible = false;
                 AdTime = 0.0f;
                 if(AdOne != null)
