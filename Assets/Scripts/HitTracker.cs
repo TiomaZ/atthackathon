@@ -8,6 +8,7 @@ public class HitTracker : MonoBehaviour
     #region Public Variables
     public GameObject Camera;
     public GameObject AdOne;
+    public AnalyticsManager analyticsManager;
     #endregion
 
     #region Private Variables
@@ -18,6 +19,8 @@ public class HitTracker : MonoBehaviour
     private float hitTime;
     private float AdTime;
     private bool AdVisible;
+
+    LayerMask mask;
 
     #region Unity Methods
     void Start()
@@ -30,6 +33,8 @@ public class HitTracker : MonoBehaviour
         hitTime = 0.0f;
         AdTime = 0.0f;
         AdVisible = false;
+
+        mask = LayerMask.GetMask("HitPlane");
     }
     private void OnDisable()
     {
@@ -39,16 +44,29 @@ public class HitTracker : MonoBehaviour
     {
         if (MLEyes.IsStarted)
         {
-            LayerMask mask = LayerMask.GetMask("HitPlane");
-
             RaycastHit rayHit;
+
             _heading = MLEyes.FixationPoint - Camera.transform.position;
+            
             // Use the proper material
-            if (Physics.Raycast(Camera.transform.position, _heading, out rayHit, 10.0f,mask))
+            if (Physics.Raycast(Camera.transform.position, _heading, out rayHit, 20.0f,mask))
             {
+                Debug.Log("Hit:" + rayHit.transform.name);
+
+                Hittable hittable = rayHit.transform.GetComponent<Hittable>();
+
+                if(hittable != null)
+                {
+                    hittable.hit();
+                }
+
                 hitTime += Time.deltaTime;
                 //Debug.Log("Hit:" + hitTime);
                // Debug.Log("AdVisible: " + AdVisible);
+               if(analyticsManager)
+                {
+                    analyticsManager.addHit(gameObject.name);
+                }
             }
             else
             {

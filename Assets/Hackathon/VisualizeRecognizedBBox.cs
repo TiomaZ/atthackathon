@@ -15,7 +15,7 @@ public class VisualizeRecognizedBBox : MonoBehaviour
         for (int k = 0; k < 4; k++)
         {
             bboxTransform[k]= gameObject.transform.GetChild(k).transform;
-            Debug.Log("added " + bboxTransform[k].gameObject.name);
+            //Debug.Log("added " + bboxTransform[k].gameObject.name);
         }
         // Load all json for video once.
         streamMetadata = new StreamMetadata();
@@ -23,18 +23,18 @@ public class VisualizeRecognizedBBox : MonoBehaviour
         TextAsset targetFile = Resources.Load<TextAsset>("video_1");
 
         string jsonToParse = targetFile.text;
-        Debug.Log(jsonToParse);
+        //Debug.Log(jsonToParse);
 
         streamMetadata = JsonUtility.FromJson<StreamMetadata>(jsonToParse);
         //streamMetadata = StreamMetadata.CreateFromJSON("{\"values\":" + targetFile.text + "}");
-        Debug.Log("got past parsing streamMetadata: " + jsonToParse);
+        //Debug.Log("got past parsing streamMetadata: " + jsonToParse);
 
 
-        Debug.Log("Found " + streamMetadata.mlFrames.Length + " mlFrames");
+        //Debug.Log("Found " + streamMetadata.mlFrames.Length + " mlFrames");
 
         //Debug.Log("Found " + streamMetadata.bBoxes[0].id + " is id");
         //Debug.Log("Found " + streamMetadata.bBoxes[0].topLeftOffsetX + " is topleftofx");
-        Debug.Log("Found mlData to parse later " + streamMetadata.mlFrames[0].mlData);
+        //Debug.Log("Found mlData to parse later " + streamMetadata.mlFrames[0].mlData);
         
         //for(int i = 0; i < 264; i++)
             //Debug.Log("time["+i+"]=" + streamMetadata.mlFrames[i].time); 
@@ -72,7 +72,7 @@ public class VisualizeRecognizedBBox : MonoBehaviour
                 //Debug.Log("mlData was found to be " + jsonToParseBBox);
                 bBoxes = JsonUtility.FromJson<BBoxes>(jsonToParseBBox);
                 // Draw bounding box
-                Debug.Log(bBoxes.bboxes.Length + " boxes this frame");
+                //Debug.Log(bBoxes.bboxes.Length + " boxes this frame");
                 for (int j = 0; j < bBoxes.bboxes.Length; j++)
                 {
                     float normalizedBoxWidth = bBoxes.bboxes[j].bbox.width / 100.0f;

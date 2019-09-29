@@ -5,21 +5,21 @@ using UnityEngine;
 public class AnalyticsManager : MonoBehaviour
 {
 
-    Dictionary<string, float> dictionary;
+    Dictionary<string, int> dictionary;
 
-    public void addTime(string name, float timeToAdd)
+    public void addHit(string name)
     {
-        float currentTime = 0.0f;
+        int currentCount = 0;
 
-        dictionary.TryGetValue(name, out currentTime);
+        dictionary.TryGetValue(name, out currentCount);
 
-        dictionary[name] = currentTime + timeToAdd;
+        dictionary[name] = currentCount++;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        dictionary = new Dictionary<string, float>();
+        dictionary = new Dictionary<string, int>();
     }
 
     // Update is called once per frame
