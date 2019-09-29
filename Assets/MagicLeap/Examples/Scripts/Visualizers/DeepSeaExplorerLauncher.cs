@@ -55,6 +55,7 @@ namespace MagicLeap
         /// </summary>
         void OnEnable()
         {
+            Debug.Log("DeepSpace: OnEnable");
             CreateExplorers();
         }
 
@@ -63,6 +64,7 @@ namespace MagicLeap
         /// </summary>
         void OnDisable()
         {
+            Debug.Log("DeepSpace: OnDisable");
             DestroyExplorers();
         }
 

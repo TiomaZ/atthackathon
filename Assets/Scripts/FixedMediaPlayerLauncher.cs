@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MediaPlayerLauncher : MonoBehaviour
+public class FixedMediaPlayerLauncher : MonoBehaviour
 {
     [SerializeField]
     private GameObject _mediaPlayerPrefab;
@@ -25,7 +25,7 @@ public class MediaPlayerLauncher : MonoBehaviour
         Debug.Log("MediaPlayerLauncher: On Enable");
         //Vector3 position = GetPosition();
         _mediaPlayer = Instantiate(_mediaPlayerPrefab, transform.position, Quaternion.identity);
-        _mediaPlayer.transform.Rotate(Vector3.up, 90.0f);
+        //_mediaPlayer.transform.Rotate(Vector3.up, 90.0f);
     }
 
     private void OnDisable()

@@ -139,12 +139,15 @@ public class FixedImageTrackingVisualizer : MonoBehaviour
 
     private void OnTargetUpdated(MLImageTargetResult mlImageTargetResult)
     {
-        Debug.Log("OnTargetUpdated");
+        /*
+        //Debug.Log("OnTargetUpdated");
         if(mlImageTargetResult.Status == MLImageTargetTrackingStatus.Tracked && _demo != null && _demo.activeInHierarchy)
         {
             Debug.Log("Setting Position:" + mlImageTargetResult.Position);
             _demo.transform.position = mlImageTargetResult.Position;
+            _demo.transform.rotation = mlImageTargetResult.Rotation;
         }
+        */
     }
 
     #endregion

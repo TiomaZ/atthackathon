@@ -42,6 +42,7 @@ namespace MagicLeap
         private GameObject _demo = null;
 
         private ImageTrackingExample.ViewMode _lastViewMode = ImageTrackingExample.ViewMode.All;
+
         #endregion
 
         #region Unity Methods
@@ -87,6 +88,7 @@ namespace MagicLeap
             _trackerBehavior = GetComponent<MLImageTrackerBehavior>();
             _trackerBehavior.OnTargetFound += OnTargetFound;
             _trackerBehavior.OnTargetLost += OnTargetLost;
+            _trackerBehavior.OnTargetUpdated += OnTargetUpdated;
 
             RefreshViewMode();
         }
@@ -103,6 +105,7 @@ namespace MagicLeap
         {
             _trackerBehavior.OnTargetFound -= OnTargetFound;
             _trackerBehavior.OnTargetLost -= OnTargetLost;
+            _trackerBehavior.OnTargetUpdated -= OnTargetUpdated;
         }
         #endregion
 
@@ -157,7 +160,7 @@ namespace MagicLeap
         /// <param name="isReliable"> Contains if image found is reliable </param>
         private void OnTargetFound(bool isReliable)
         {
-            //Debug.Log("OnTargetFound");
+            Debug.Log("OnTargetFound");
             _eventString = String.Format("Target Found ({0})", (isReliable ? "Reliable" : "Unreliable"));
             _targetFound = true;
             RefreshViewMode();
@@ -168,11 +171,16 @@ namespace MagicLeap
         /// </summary>
         private void OnTargetLost()
         {
-            //Debug.Log("OnTargetLost");
+            Debug.Log("OnTargetLost");
             _eventString = "Target Lost";
             _targetFound = false;
             RefreshViewMode();
         }
-        #endregion
-    }
+
+        private void OnTargetUpdated(MLImageTargetResult mlImageTargetResult)
+        {
+            Debug.Log("OnTargetUpdated ("+ gameObject.name +": " + mlImageTargetResult.Rotation);
+        }
+            #endregion
+        }
 }

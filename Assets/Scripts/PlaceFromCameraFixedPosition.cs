@@ -115,7 +115,7 @@ namespace MagicLeap
         {
             // Move the object in front of the camera with specified offsets.
             Vector3 offsetVector = (camera.transform.up * _heightOffset) + (camera.transform.right * _lateralOffset);
-            Vector3 targetPosition = camera.transform.position + offsetVector + (camera.transform.forward * _distance);
+            //Vector3 targetPosition = camera.transform.position + offsetVector + (camera.transform.forward * _distance);
             //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _positionVelocity, _positionSmoothTime);
 
             Quaternion targetRotation = transform.rotation;
@@ -137,7 +137,7 @@ namespace MagicLeap
             if (_placeOnAwake)
             {
                 // Snap to the location right away.
-                transform.position = targetPosition;
+                //transform.position = targetPosition;
                 transform.rotation = targetRotation;
 
                 _placeOnAwake = false;
