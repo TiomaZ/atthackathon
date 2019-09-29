@@ -9,5 +9,5 @@ public class MLFrame
     public string streamId;
     public string link;
     public float time;
-    public BBox[] bboxes;
+    public string mlData;
 }
