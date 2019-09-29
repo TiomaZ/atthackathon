@@ -69,6 +69,7 @@ namespace MagicLeap
         /// </summary>
         void OnEnable()
         {
+            Debug.Log("DeepSpace: OnEnable");
             _planetInstance = Instantiate(_planetPrefabAnimator.transform, GetPosition(), Quaternion.identity);
         }
 
@@ -77,6 +78,7 @@ namespace MagicLeap
         /// </summary>
         void OnDisable()
         {
+            Debug.Log("DeepSpace: OnDisable");
             if (null != _planetInstance)
             {
                 _planetInstance.GetComponent<Animator>().Play("EarthShrinking");

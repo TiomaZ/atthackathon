@@ -195,7 +195,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4474634083496628}
-  - component: {fileID: -2858139767473771258}
   - component: {fileID: 114265682372001094}
   m_Layer: 0
   m_Name: MediaPlayerFixedPosition
@@ -212,7 +211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372590444297984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 1.2}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4243344426836676}
@@ -226,26 +225,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2858139767473771258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372590444297984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88de94657b67bd64cb30b49a0710bab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _distance: 1.2
-  _heightOffset: 0
-  _lateralOffset: 0
-  _positionSmoothTime: 0.3
-  _rotationSmoothTime: 0.1
-  _lookDirection: 2
-  _placeOnAwake: 1
-  _placeOnUpdate: 1
 --- !u!114 &114265682372001094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +250,7 @@ MonoBehaviour:
   _bufferBar: {fileID: 4611633548365268}
   _volumeSlider: {fileID: 114842978386943988}
   _elapsedTime: {fileID: 102895099013596576}
-  _url: https://storage.googleapis.com/viacom-hackathon-sept-2019/LoveAndHipHop/ALS_Raq_Finis_84341759_CC_095_640x360_1028.mp4?x-goog-signature=77acf1b6c98d141f861c5bba2358687ca4f465da13659d695a9f7bc5542596401f90041ec0426426187cc61b0316cbfe615d46c37284363cb2a4a71f3d80998a56d8acb9808bec9e6c9be111a5466e9924f3a885b6ea523c4382736ebb430a134a9867ff0dc5d563dd3be71b7c484d9750615960f02c8667011ed15b7e59210f6a346c61345eacab34901a3e9d3f683510e28e7d264976e3edd9d60ef23d5a5de99574ddf180b4df557749433e6fbafcd76ef882a6895ab67761f072b4b8079b390b1bbd9c8ba8bc5d587b7f7f7c64c8df50c487149de8ab15bc5c3a96cacae5e4b86cd73fe0b9ddeeca284f027a037295b8c8259b825b69de538859f8d680ea&x-goog-algorithm=GOOG4-RSA-SHA256&x-goog-credential=viacom-hackathon-sept-2019%40prelaunch.iam.gserviceaccount.com%2F20190924%2Fus%2Fstorage%2Fgoog4_request&x-goog-date=20190924T134034Z&x-goog-expires=604800&x-goog-signedheaders=host
+  _url: https://storage.googleapis.com/viacom-hackathon-sept-2019/AreYouTheOne/PTS_AreYouTheOne_640x360_1028.mp4?x-goog-signature=57d847a31af10b7b9d7b70c4818d076ada6d5371c012c7479b5d1fb6eb4b5d87c0a70c56c28c4b033e134178441cb878b5aa548c9cc0b41563a633b65a07340561c788360711fedea883dd6d3909dbea26fe50bdf630a233c504eec7e01153134b6dace4f704148a0bf1b903c4d41a674f29be8bfdc47440bfdfaaf04e6693eb2d30076cfb84a4e754cb9c49eb10bbf39a8c7ce14edf2b7d8cb98a916d9c569683bb3c17532508efbae8b24eb166fe4005a906df88d91b7a044cbf78aed9914f8660f76b26cd90583fef70f363320daec1f670a0d957c0c9154bfba16136963b75204cc10078f849fcd597a33e657ad6045962661ad111076c0218d679f0445f&x-goog-algorithm=GOOG4-RSA-SHA256&x-goog-credential=viacom-hackathon-sept-2019%40prelaunch.iam.gserviceaccount.com%2F20190924%2Fus%2Fstorage%2Fgoog4_request&x-goog-date=20190924T132740Z&x-goog-expires=604800&x-goog-signedheaders=host20190924%2Fus%2Fstorage%2Fgoog4_request&x-goog-date=20190924T134034Z&x-goog-expires=604800&x-goog-signedheaders=host
   _licenseUrl: 
   _stereoMode: 0
   _videoRenderMaterial: {fileID: 2100000, guid: dcceef03bb9839949ac4ef568106f685,
