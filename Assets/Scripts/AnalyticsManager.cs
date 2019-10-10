@@ -5,9 +5,9 @@ using UnityEngine;
 public class AnalyticsManager : MonoBehaviour
 {
 
-    Dictionary<string, int> dictionary;
+    static Dictionary<string, int> dictionary = new Dictionary<string, int>();
 
-    public void addHit(string name)
+    public static void addHit(string name)
     {
         int currentCount = 0;
 

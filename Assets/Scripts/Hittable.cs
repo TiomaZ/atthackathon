@@ -5,15 +5,26 @@ using UnityEngine;
 public class Hittable : MonoBehaviour
 {
 
-    public AdDisplay adDisplay;
+    //public AdDisplay adDisplay;
 
     public void hit()
     {
-        Debug.Log("I'm hit: " + gameObject.name);
+        TextMesh textMesh = GetComponentInChildren<TextMesh>();
+
+        if (textMesh) {
+            string text = textMesh.text;
+
+            Debug.Log("I'm hit: [" + gameObject.name + "][" + text + "]");
+
+            AnalyticsManager.addHit(gameObject.name);
+        }
+
+        /*
         if(adDisplay != null)
         {
             adDisplay.hit();
         }
+        */
     }
 
     /*
