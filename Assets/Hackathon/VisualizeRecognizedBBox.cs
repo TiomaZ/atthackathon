@@ -1,5 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VisualizeRecognizedBBox : MonoBehaviour
@@ -8,9 +6,14 @@ public class VisualizeRecognizedBBox : MonoBehaviour
     BBoxes bBoxes;
     Transform[] bboxTransform;
     int lastFrameIndex = 0;
+    float mLastUpdateUITime = 0.0f;
+    float timeSinceVideoStart = 0.0f;
+    float timeSinceSecondStart = 0.0f;
         
+    MagicLeap.MediaPlayerExample mediaPlayerExample;
     void Start()
     {
+        mediaPlayerExample = GameObject.Find("MediaPlayerExample").GetComponent<MagicLeap.MediaPlayerExample>();
         bboxTransform = new Transform[4];
         for (int k = 0; k < 4; k++)
         {
@@ -28,10 +31,7 @@ public class VisualizeRecognizedBBox : MonoBehaviour
         streamMetadata = JsonUtility.FromJson<StreamMetadata>(jsonToParse);
         //streamMetadata = StreamMetadata.CreateFromJSON("{\"values\":" + targetFile.text + "}");
         //Debug.Log("got past parsing streamMetadata: " + jsonToParse);
-
-
         //Debug.Log("Found " + streamMetadata.mlFrames.Length + " mlFrames");
-
         //Debug.Log("Found " + streamMetadata.bBoxes[0].id + " is id");
         //Debug.Log("Found " + streamMetadata.bBoxes[0].topLeftOffsetX + " is topleftofx");
         //Debug.Log("Found mlData to parse later " + streamMetadata.mlFrames[0].mlData);
@@ -42,14 +42,25 @@ public class VisualizeRecognizedBBox : MonoBehaviour
 
     void Update()
     {
-        // check point in time since video playback started
-        // map to tenth of second
-        float timeSinceVideoStart = Time.time * 10.0f;
-        //timeSinceVideoStart = Mathf.Clamp(timeSinceVideoStart, 0.0f, 111.99f);
-        int frameIndex = (int)timeSinceVideoStart;
+        // Track time since video playback started to the tenth of a second, as that is how often machine-learned object-identification .json has data.
+        //Debug.Log("timeSinceStart: " + Time.time + " elapsedTime: " + mediaPlayerExample.GetElapsedTimeMs() + " updateUITime: " + mediaPlayerExample.GetUiUpdateTimeMs());
+        int currentWholeSecondsOfElapsedTime = mediaPlayerExample.GetElapsedTimeMs() / 1000;
+        if ((int)timeSinceVideoStart != (currentWholeSecondsOfElapsedTime))
+        {
+            timeSinceSecondStart = 0.0f;
+        }
+        timeSinceVideoStart = mediaPlayerExample.GetElapsedTimeMs() / 1000.0f;
+        if (mLastUpdateUITime > mediaPlayerExample.GetUiUpdateTimeMs())
+        {
+            // a tenth of a second has passed, and the frame index needs updated...
+            timeSinceSecondStart += 0.1f;
+        }
+        mLastUpdateUITime = mediaPlayerExample.GetUiUpdateTimeMs();
+        
+        int frameIndex = (int)(10 * (timeSinceVideoStart + timeSinceSecondStart));
         frameIndex %= 264;
         //frameIndex = 263;
-        //Debug.Log("time is " + Time.time + " frameIndex = " + frameIndex);
+        //Debug.Log("video time is " + (timeSinceVideoStart + timeSinceSecondStart) + " frameIndex = " + frameIndex);
 
         // frame index only gets updated every .1 seconds, so not every frame
         if (frameIndex != lastFrameIndex)
