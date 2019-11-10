@@ -513,6 +513,15 @@ namespace MagicLeap
             _mediaPlayer.SetVolume(sliderValue);
         }
         #endregion // Event Handlers
+
+        public int GetElapsedTimeMs()
+        {
+            return _mediaPlayer.GetElapsedTimeMs();
+        }
+
+        public float GetUiUpdateTimeMs()
+        {
+            return _UIUpdateTimer;
+        }
     }
 }
-
