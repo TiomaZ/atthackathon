@@ -86,8 +86,8 @@ public class VisualizeRecognizedBBox : MonoBehaviour
                         -0.5f + bBoxes.bboxes[j].bbox.topLeftOffsetX / 100.0f + normalizedBoxWidth / 2.0f,
                         0.5f - bBoxes.bboxes[j].bbox.topLeftOffsetY / 100.0f - normalizedBoxHeight / 2.0f,
                         -0.01f);
-                        bboxTransform[j].transform.GetChild(0).GetComponent<TextMesh>().text = bBoxes.bboxes[j].bbox.type;
-                        bboxTransform[j].transform.GetChild(0).GetComponent<Transform>().localScale = new Vector3(1.0f / normalizedBoxWidth, 1.0f / normalizedBoxHeight, 1.0f);
+                        bboxTransform[j].transform.GetChild(0).GetChild(0).GetComponent<TextMesh>().text = bBoxes.bboxes[j].bbox.type;
+                        bboxTransform[j].transform.GetChild(0).GetChild(0).GetComponent<Transform>().localScale = new Vector3(1.0f / normalizedBoxWidth, 1.0f / normalizedBoxHeight, 1.0f);
                 }
             }
             else

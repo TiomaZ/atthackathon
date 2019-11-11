@@ -66,7 +66,7 @@ public class HitTracker : MonoBehaviour
                // Debug.Log("AdVisible: " + AdVisible);
                if(analyticsManager)
                 {
-                    AnalyticsManager.addHit(gameObject.name);
+                    analyticsManager.addHit(gameObject.name);
                 }
             }
             else

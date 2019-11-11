@@ -7,6 +7,8 @@ public class Hittable : MonoBehaviour
 
     //public AdDisplay adDisplay;
 
+    public AnalyticsManager analyticsManager;
+
     public void hit()
     {
         TextMesh textMesh = GetComponentInChildren<TextMesh>();
@@ -14,9 +16,11 @@ public class Hittable : MonoBehaviour
         if (textMesh) {
             string text = textMesh.text;
 
-            Debug.Log("I'm hit: [" + gameObject.name + "][" + text + "]");
-
-            AnalyticsManager.addHit(gameObject.name);
+            //Debug.Log("I'm hit: [" + gameObject.name + "][" + text + "]");
+            if (analyticsManager != null)
+            {
+                analyticsManager.addHit(text);
+            }
         }
 
         /*
