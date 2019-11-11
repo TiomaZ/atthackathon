@@ -13,7 +13,8 @@ public class VisualizeRecognizedBBox : MonoBehaviour
     MagicLeap.MediaPlayerExample mediaPlayerExample;
     void Start()
     {
-        mediaPlayerExample = GameObject.Find("MediaPlayerExample").GetComponent<MagicLeap.MediaPlayerExample>();
+        //mediaPlayerExample = GameObject.Find("MediaPlayerExample").GetComponent<MagicLeap.MediaPlayerExample>();
+        mediaPlayerExample = GameObject.Find("MediaPlayerFixedPosition").GetComponent<MagicLeap.MediaPlayerExample>();
         bboxTransform = new Transform[4];
         for (int k = 0; k < 4; k++)
         {

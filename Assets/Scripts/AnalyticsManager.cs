@@ -10,6 +10,8 @@ public class AnalyticsManager : MonoBehaviour
     public TextMeshProUGUI textMeshProUGUITwo;
     public TextMeshProUGUI textMeshProUGUIThree;
     public TextMeshProUGUI textMeshProUGUIFour;
+    public TextMeshProUGUI textMeshProUGUIFive;
+    public TextMeshProUGUI textMeshProUGUISix;
 
     Dictionary<string, int> dictionary;
 
@@ -50,6 +52,16 @@ public class AnalyticsManager : MonoBehaviour
             if (myList.Count > 3)
             {
                 textMeshProUGUIFour.text = "Name: " + myList[3].Key + ", Count: " + myList[3].Value;
+            }
+
+            if (myList.Count > 4)
+            {
+                textMeshProUGUIFive.text = "Name: " + myList[4].Key + ", Count: " + myList[4].Value;
+            }
+
+            if (myList.Count > 5)
+            {
+                textMeshProUGUISix.text = "Name: " + myList[5].Key + ", Count: " + myList[5].Value;
             }
         }
     }
